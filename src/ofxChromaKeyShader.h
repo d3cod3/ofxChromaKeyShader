@@ -50,6 +50,7 @@ public:
 	void drawFinalImage(float x, float y, float w, float h);
 
 	ofImage getFinalImage();
+	ofTexture getFinalMask(ofTexture back);
 
 	// ==================== Variables ====================
 	ChromaKeyShaders chromakeyshaders;
@@ -60,6 +61,7 @@ public:
 	ofShader shader_detail, shader_base, shader_hblur, shader_vblur;
 	ofShader shader_dilate, shader_erode, shader_chroma, shader_final;
 	ofFbo fbo_detail, fbo_base, fbo_pingpong, fbo_chroma, fbo_final;
+	ofFbo finalTexture;
 			
 	// Greenscreen params
 	ofParameterGroup paramGp;

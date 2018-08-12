@@ -38,17 +38,18 @@ ofxChromaKeyShader::ofxChromaKeyShader(int _width, int _height)
 	fbo_chroma.allocate(width, height, GL_RGB);
 	fbo_pingpong.allocate(width, height, GL_RGBA);
 	fbo_final.allocate(width, height, GL_RGBA);
+	finalTexture.allocate(width, height, GL_RGBA);
 
 	paramGp.setName("greenscreenSettings");
 	paramGp.add(bgColorPos.set("bgColorPos", ofVec2f(width*0.75, height*0.1), ofVec2f(0.0), ofVec2f(width, height)));
 	paramGp.add(bgColorSize.set("bgColorROIsize", 20, 1, height));
-	bgColor.set("bgColor", ofFloatColor(0.5020, 0.7373, 0.5137, 1.0), ofFloatColor(0.0, 0.0), ofFloatColor(1.0, 1.0));
+    bgColor.set("bgColor", ofFloatColor(0.187398, 0.249992, 0.400756, 1.0), ofFloatColor(0.0, 0.0), ofFloatColor(1.0, 1.0));
 	paramGp.add(bgColor);
-	paramGp.add(baseMaskStrength.set("baseMaskStrength", .6, 0.0, 1.0));
-	paramGp.add(chromaMaskStrength.set("chromaMaskStrength", .4, 0.0, 1.0));	
-	paramGp.add(greenSpillStrength.set("greenspillStrength", .4, 0.0, 1.0));
-	paramGp.add(multiplyFilterHueOffset.set("multiplyFilterHueOffset", 0.25, 0.0, 1.0));
-	paramGp.add(blurValue.set("blurValue", 512.f, 0.0, 4096.f));
+    paramGp.add(baseMaskStrength.set("baseMaskStrength", .37, 0.0, 1.0));
+    paramGp.add(chromaMaskStrength.set("chromaMaskStrength", .5, 0.0, 1.0));
+    paramGp.add(greenSpillStrength.set("greenspillStrength", .39, 0.0, 1.0));
+    paramGp.add(multiplyFilterHueOffset.set("multiplyFilterHueOffset", 0.28, 0.0, 1.0));
+    paramGp.add(blurValue.set("blurValue", 1000.f, 0.0, 4096.f));
 	paramGp.add(dilateStep.set("dilateStep", 3, 0, 7));
 	paramGp.add(erodeStep.set("erodeStep", 1, 0, 7));
 	paramGp.add(baseMaskClip.set("baseMaskClip(b,w)", ofVec2f(.2, .6), ofVec2f(0.0), ofVec2f(1.0)));
@@ -100,6 +101,15 @@ ofImage ofxChromaKeyShader::getFinalImage(){
 	finalImg.setImageType(OF_IMAGE_COLOR);
 	
 	return finalImg;
+}
+
+//--------------------------------------------------------------
+ofTexture ofxChromaKeyShader::getFinalMask(ofTexture back){
+	finalTexture.begin();
+	back.draw(0,0,width,height);
+	drawFinalMask(0,0,width,height);
+	finalTexture.end();
+	return finalTexture.getTexture();
 }
 
 //--------------------------------------------------------------
