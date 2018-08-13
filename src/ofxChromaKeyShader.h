@@ -52,6 +52,16 @@ public:
 	ofImage getFinalImage();
 	ofTexture getFinalMask(ofTexture back);
 
+    // ==================== Setters ======================
+    void setbgColor(ofColor c) { bgColor.set(ofFloatColor(c.r/255.0f, c.g/255.0f, c.b/255.0f, 1.0)); }
+
+    void setbaseMaskStrength(float value) { baseMaskStrength.set(value); }
+    void setchromaMaskStrength(float value) { chromaMaskStrength.set(value); }
+    void setgreenSpillStrength(float value) { greenSpillStrength.set(value); }
+
+    void setblurValue(float value) { blurValue.set(value); }
+    void setmultiplyFilterHueOffset(float value) { multiplyFilterHueOffset.set(value); }
+
 	// ==================== Variables ====================
 	ChromaKeyShaders chromakeyshaders;
     ChromaKeyShaders150 chromakeyshaders150;
