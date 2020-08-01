@@ -30,3 +30,6 @@ obj/
 bin/
 build/
 !data/
+
+build-example-with-ofxGui-Desktop-Debug/*
+example-with-ofxGui/example-with-ofxGui.qbs.user
