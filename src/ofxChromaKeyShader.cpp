@@ -52,10 +52,10 @@ ofxChromaKeyShader::ofxChromaKeyShader(int _width, int _height)
     paramGp.add(blurValue.set("blurValue", 1000.f, 0.0, 4096.f));
 	paramGp.add(dilateStep.set("dilateStep", 3, 0, 7));
 	paramGp.add(erodeStep.set("erodeStep", 1, 0, 7));
-	paramGp.add(baseMaskClip.set("baseMaskClip(b,w)", ofVec2f(.2, .6), ofVec2f(0.0), ofVec2f(1.0)));
-	paramGp.add(detailMaskClip.set("detailMaskClip(b,w)", ofVec2f(.565, .82), ofVec2f(0.0), ofVec2f(1.0)));
-	paramGp.add(endMaskClip.set("endMaskClip(b,w)", ofVec2f(.1, .6), ofVec2f(0.0), ofVec2f(1.0)));
-	paramGp.add(clippingMaskTL.set("clippingMask(TL)", ofVec2f(0.f), ofVec2f(0.f), ofVec2f(width, height)));
+    paramGp.add(baseMaskClip.set("baseMaskClip(b,w)", ofVec2f(.2, .6), ofVec2f(0.0), ofVec2f(1.0)));
+    paramGp.add(detailMaskClip.set("detailMaskClip(b,w)", ofVec2f(.565, .82), ofVec2f(0.0), ofVec2f(1.0)));
+    paramGp.add(endMaskClip.set("endMaskClip(b,w)", ofVec2f(.1, .6), ofVec2f(0.0), ofVec2f(1.0)));
+    paramGp.add(clippingMaskTL.set("clippingMask(TL)", ofVec2f(width, height), ofVec2f(0.f), ofVec2f(width, height)));
 	paramGp.add(clippingMaskBR.set("clippingMask(BR)", ofVec2f(0.f), ofVec2f(0.f), ofVec2f(width, height)));
 	paramGp.add(photoOffset.set("photoOffset", ofVec2f(0.f), ofVec2f(-width, -height), ofVec2f(width, height)));
 	paramGp.add(photoZoom.set("photoZoom", 1.f, 1.f, 4.f));

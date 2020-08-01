@@ -54,6 +54,7 @@ public:
 
     // ==================== Setters ======================
     void setbgColor(ofColor c) { bgColor.set(ofFloatColor(c.r/255.0f, c.g/255.0f, c.b/255.0f, 1.0)); }
+    void setbgColor(ofFloatColor c) { bgColor.set(ofFloatColor(c.r, c.g, c.b, 1.0)); }
 
     void setbaseMaskStrength(float value) { baseMaskStrength.set(value); }
     void setchromaMaskStrength(float value) { chromaMaskStrength.set(value); }
